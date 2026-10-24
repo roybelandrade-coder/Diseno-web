@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><title>Diseño Web Profesional</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+:root{--r:#e11d2e;--bg:#0b0b0d;--cd:#16161a;--tx:#f5f5f5;--mu:#a1a1aa;--ln:#2a2a30;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:70px;scroll-behavior:smooth}*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#0b0b0dee;backdrop-filter:blur(8px);border-bottom:1px solid var(--ln);display:flex;align-items:center;gap:14px;padding:10px 5%;overflow-x:auto}
+header b{white-space:nowrap}header b span{color:var(--r)}header nav{display:flex;gap:14px;margin-left:auto;white-space:nowrap}header nav a{text-decoration:none;color:var(--mu);font-size:14px}
+.btn{display:inline-block;background:var(--r);color:#fff;border:0;padding:11px 20px;border-radius:10px;font:600 15px inherit;cursor:pointer;text-decoration:none;transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.15)}.btn.g{background:transparent;border:1px solid var(--ln)}.btn.s{padding:7px 12px;font-size:13px}
+.w{padding:64px 5%;max-width:1100px;margin:auto}.hero{text-align:center;padding:90px 5% 60px}.hero h1{font-size:clamp(32px,6vw,58px)}.hero h1 span{color:var(--r)}.hero p{color:var(--mu);max-width:600px;margin:0 auto 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.card{background:var(--cd);border:1px solid var(--ln);border-radius:14px;padding:20px;transition:.2s}.card:hover{border-color:var(--r);transform:translateY(-3px)}
+.card.t{cursor:pointer;text-align:center}.card.t div{font-size:34px}.card.f{border-color:var(--r)}.price{font-size:34px;font-weight:800;color:var(--r)}
+details.q{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:12px 16px;margin-bottom:8px}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--ln);padding:24px 5%;text-align:center;color:var(--mu);font-size:14px}
+#ed2{display:grid;grid-template-columns:350px 1fr;height:calc(100vh - 110px)}#panel{overflow:auto;padding:14px;border-right:1px solid var(--ln)}
+#stage{background:#1d1d22;display:flex;justify-content:center;padding:12px;overflow:auto}#fr{border:0;background:#fff;width:100%;height:100%;border-radius:8px;transition:width .25s}#fr.m{width:375px}
+.bar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:8px 5%;border-bottom:1px solid var(--ln)}
+label{display:block;font-size:12px;color:var(--mu);margin:8px 0 3px}input,select,textarea{width:100%;background:#0f0f12;color:var(--tx);border:1px solid var(--ln);border-radius:8px;padding:8px;font:inherit;font-size:14px}input[type=color]{height:36px;padding:2px}input[type=checkbox]{width:auto}textarea{min-height:70px}
+.sc{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:8px 10px;margin:8px 0}.sc summary{display:flex;gap:6px;align-items:center}.sc summary span{flex:1}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}.tabs .btn{background:#222}.tabs .on{background:var(--r)}h4{margin:16px 0 4px;color:var(--r)}
+dialog{background:var(--cd);color:var(--tx);border:1px solid var(--r);border-radius:14px;max-width:640px;width:92%;padding:22px}dialog::backdrop{background:#000a}
+#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--r);padding:10px 18px;border-radius:10px;z-index:50;opacity:0;transition:.3s;pointer-events:none}#toast.on{opacity:1}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:#25d366;color:#fff;border-radius:30px;padding:12px 18px;font-weight:700;text-decoration:none;z-index:25}
+@media(max-width:800px){#ed2{grid-template-columns:1fr;height:auto}#panel{max-height:55vh;border-right:0;border-bottom:1px solid var(--ln)}#stage{height:70vh}}
+</style></head><body>
+<header><b>Diseño Web <span>Profesional</span></b><nav><a href="#inicio">Inicio</a><a href="#como">Cómo funciona</a><a href="#crear">Crear mi página web</a><a href="#precios">Precios</a><a href="#faq">Preguntas</a><a href="#contacto">Contacto</a><a href="#" id="lg" onclick="loginDlg();return false">Entrar</a><a href="#" id="adm" hidden onclick="admin();return false" style="color:var(--r)">Admin</a></nav></header>
+
+<main id="site">
+<section class="hero" id="inicio"><h1>Crea tu página web <span>sin saber programar</span></h1><p>Elige una plantilla, personalízala con el editor visual, mira la vista previa y descarga tu sitio listo para publicar. Rápido y desde US$5.</p><a class="btn" href="#editor">Crear mi página web</a> <a class="btn g" href="#precios">Ver precios</a></section>
+<section class="w" id="como"><h2>Cómo funciona</h2><div class="grid">
+<div class="card"><h3>1. Elige</h3>Selecciona una plantilla o empieza desde cero.</div><div class="card"><h3>2. Diseña</h3>Cambia textos, colores, imágenes y secciones con vista previa en vivo.</div><div class="card"><h3>3. Paga</h3>Elige tu plan y paga por PayPal.</div><div class="card"><h3>4. Publica</h3>Descarga el ZIP e instrucciones para publicarlo gratis.</div></div></section>
+<section class="w" id="crear"><h2>Crear mi página web</h2><p style="color:var(--mu)">Elige una plantilla para empezar:</p><div id="tpls1" class="grid"></div><p id="cont"></p></section>
+<section class="w" id="precios"><h2>Precios</h2><div class="grid" id="plans"></div><p style="color:var(--mu);font-size:14px">Precios por página, en dólares estadounidenses.</p></section>
+<section class="w" id="faq"><h2>Preguntas frecuentes</h2>
+<details class="q"><summary>¿Necesito saber programar?</summary>No. El modo sencillo no requiere código; el modo avanzado permite añadir tu propio CSS y JavaScript.</details>
+<details class="q"><summary>¿Cómo pago?</summary>Por PayPal. Al exportar verás los pasos del pago y cómo confirmarlo conmigo por WhatsApp.</details>
+<details class="q"><summary>¿Dónde publico mi página?</summary>El ZIP incluye instrucciones para GitHub Pages, Netlify y Cloudflare Pages (gratis). Tu enlace público lo obtienes tú al subirla a ese servicio.</details>
+<details class="q"><summary>¿Se guarda mi trabajo?</summary>Sí, en este navegador. Para no perderlo, descarga tu ZIP.</details></section>
+<section class="w" id="contacto"><h2>Contacto</h2><p>¿Dudas, precios o ayuda para publicar?</p><a class="btn" id="wa1" target="_blank" rel="noopener">Escribir por WhatsApp</a> <a class="btn g" id="ml">Enviar correo</a></section>
+<footer>© Diseño Web Profesional · <span id="ft"></span></footer>
+</main>
+
+<section id="ed" hidden style="display:block"><div class="bar" id="bar"></div>
+<div id="pick" class="w" hidden><button id="back" class="btn g s" hidden onclick="route()">← Volver a mi proyecto</button><h2>Elige una plantilla</h2><div id="tpls2" class="grid"></div></div>
+<div id="ed2" hidden><div id="panel"></div><div id="stage"><iframe id="fr" title="Vista previa"></iframe></div></div></section>
+
+<dialog id="dlg"></dialog><div id="toast"></div>
+
+<script>
+const CFG={wa:'50589493456',mail:'roybelandrade@gmail.com',paypal:'roybelandrade@gmail.com',
+plans:[{n:'Básico',p:5,d:'Plantillas sencillas, personalización y descarga del proyecto.'},{n:'Profesional',p:10,d:'Más opciones de diseño, secciones adicionales y herramientas avanzadas.',f:1},{n:'Premium',p:15,d:'Funciones adicionales, más plantillas y asistencia para publicar.'}]};
+const $=s=>document.querySelector(s),esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const wal=m=>`https://wa.me/${CFG.wa}?text=${encodeURIComponent(m)}`;
+const T={negocio:['💼','Negocio','#e11d2e',1,'Soluciones para tu negocio','Calidad y atención personalizada.','Asesoría|Te guiamos paso a paso\nServicio rápido|Resultados en poco tiempo\nGarantía|Tu satisfacción primero'],
+restaurante:['🍽️','Restaurante','#d97706',1,'Sabores que se recuerdan','Cocina casera, ingredientes frescos.','Entradas|Para abrir el apetito\nPlatos fuertes|Nuestras especialidades\nPostres|El final perfecto'],
+barberia:['💈','Barbería','#e11d2e',1,'Estilo y precisión','Cortes clásicos y modernos.','Corte|Clásico o moderno\nBarba|Perfilado y cuidado\nCombo|Corte + barba'],
+tienda:['🛍️','Tienda','#2563eb',0,'Tu tienda de confianza','Productos seleccionados al mejor precio.','Novedades|Lo último que llegó\nOfertas|Precios especiales\nEnvíos|Rápidos y seguros'],
+portafolio:['🎨','Portafolio','#7c3aed',1,'Hola, soy creativo','Estos son algunos de mis trabajos.','Diseño|Identidad y gráfica\nWeb|Sitios a medida\nFotografía|Retratos y eventos'],
+personal:['🙋','Personal','#059669',0,'Hola, soy yo','Una página sencilla para presentarme.','Sobre mí|Mi historia\nIntereses|Lo que me apasiona\nContacto|Hablemos'],
+blanco:['📄','Desde cero','#e11d2e',1,'Título de tu página','Escribe aquí tu descripción.','Servicio 1|Descripción\nServicio 2|Descripción']};
+const FONTS={'Moderna':'system-ui,sans-serif','Elegante':'Georgia,serif','Redonda':"'Trebuchet MS',sans-serif",'Técnica':"'Courier New',monospace"};
+const sec=(type,o={})=>({type,title:'',text:'',items:'',btn:'',img:'',imgs:[],...o});
+const NAMES={hero:'Portada',services:'Servicios',gallery:'Galería',pricing:'Tabla de precios',text:'Texto',contact:'Contacto',social:'Redes sociales'};
+const FLD={hero:['title','text','btn','img'],services:['title','items'],gallery:['title','imgs'],pricing:['title','items'],text:['title','text'],contact:['title','text'],social:['title','items']};
+const LBL={title:'Título',text:'Texto',btn:'Texto del botón',img:'Imagen de fondo',items:'Elementos (uno por línea: Título|Descripción — o Nombre|URL en redes — o Plan|Precio|Detalle)',imgs:'Imágenes'};
+function build(k){const t=T[k];return{name:'Mi '+t[1],color:t[2],dark:t[3],font:'Moderna',wa:'',email:'',css:'',js:'',cur:0,pages:[{name:'Inicio',secs:[sec('hero',{title:t[4],text:t[5],btn:'Contáctanos'}),sec('services',{title:'Servicios',items:t[6]}),sec('contact',{title:'Contacto',text:'Escríbenos y te respondemos pronto.'})]}]}}
+const defs=type=>({services:{title:'Servicios',items:'Servicio|Descripción'},gallery:{title:'Galería'},pricing:{title:'Precios',items:'Básico|$10|Lo esencial\nPro|$20|Todo incluido'},text:{title:'Sobre nosotros',text:'Cuenta tu historia aquí.'},contact:{title:'Contacto',text:'Escríbenos.'},social:{title:'Síguenos',items:'Instagram|https://instagram.com/\nFacebook|https://facebook.com/'},hero:{title:'Título',text:'Descripción',btn:'Ver más'}}[type]);
+let P=null,H=[],hi=-1,tm;
+try{P=JSON.parse(localStorage.getItem('dwp'))}catch(e){}
+const slug=(s,i)=>i==0?'index':(s.toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'pagina'+i);
+const lines=s=>String(s||'').split('\n').map(x=>x.trim()).filter(Boolean).map(x=>x.split('|').map(y=>y.trim()));
+function css(){const d=P.dark;return `:root{--c:${esc(P.color)}}*{box-sizing:border-box}body{margin:0;font-family:${FONTS[P.font]};background:${d?'#0f0f12':'#fff'};color:${d?'#f5f5f5':'#18181b'};line-height:1.6}h1,h2,h3{line-height:1.2}nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:14px 6%;border-bottom:1px solid #8884}nav b{margin-right:auto;color:var(--c)}nav a{text-decoration:none;color:inherit}section{padding:56px 6%;max-width:1100px;margin:auto}.hero{max-width:none;text-align:center;padding:100px 6%;background-size:cover;background-position:center}.hero h1{font-size:clamp(30px,6vw,54px)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{background:${d?'#1a1a1f':'#f4f4f5'};border-radius:12px;padding:20px}.card h3{margin-top:0}.p{font-size:28px;font-weight:800;color:var(--c)}.btn{display:inline-block;background:var(--c);color:#fff;padding:11px 22px;border-radius:10px;text-decoration:none;border:0;font:inherit;cursor:pointer}.grid img{width:100%;height:200px;object-fit:cover;border-radius:12px}.ph{height:200px;border-radius:12px;background:var(--c);opacity:.25}form{display:grid;gap:10px;max-width:480px}input,textarea{padding:10px;border-radius:8px;border:1px solid #8886;font:inherit;background:transparent;color:inherit}.wa{position:fixed;right:16px;bottom:16px;background:#25d366;color:#fff;padding:12px 18px;border-radius:30px;text-decoration:none;font-weight:700}`+P.css}
+function secHTML(s,i){const g=lines(s.items),h=s.title?`<h2>${esc(s.title)}</h2>`:'',id=`id="s${i}"`;
+if(s.type=='hero')return`<section ${id} class="hero"${s.img?` style="background-image:linear-gradient(#0008,#0008),url(${s.img});color:#fff"`:''}><h1>${esc(s.title)}</h1><p>${esc(s.text)}</p>${s.btn?`<a class="btn" href="#contacto">${esc(s.btn)}</a>`:''}</section>`;
+if(s.type=='services')return`<section ${id}>${h}<div class="grid">${g.map(r=>`<div class="card"><h3>${esc(r[0])}</h3><p>${esc(r[1]||'')}</p></div>`).join('')}</div></section>`;
+if(s.type=='pricing')return`<section ${id}>${h}<div class="grid">${g.map(r=>`<div class="card"><h3>${esc(r[0])}</h3><div class="p">${esc(r[1]||'')}</div><p>${esc(r[2]||'')}</p></div>`).join('')}</div></section>`;
+if(s.type=='gallery')return`<section ${id}>${h}<div class="grid">${s.imgs.length?s.imgs.map(u=>`<img src="${u}" alt="">`).join(''):'<div class="ph"></div><div class="ph"></div><div class="ph"></div>'}</div></section>`;
+if(s.type=='social')return`<section ${id}>${h}<p>${g.filter(r=>/^https?:\/\//.test(r[1]||'')).map(r=>`<a class="btn" style="margin:4px" href="${esc(r[1])}" target="_blank" rel="noopener">${esc(r[0])}</a>`).join('')}</p></section>`;
+if(s.type=='contact'){const w=(P.wa||'').replace(/\D/g,'');return`<section ${id}><span id="contacto"></span>${h}<p>${esc(s.text)}</p>${P.email?`<form action="mailto:${esc(P.email)}" method="post" enctype="text/plain"><input name="nombre" placeholder="Tu nombre" required><input name="correo" type="email" placeholder="Tu correo" required><textarea name="mensaje" placeholder="Tu mensaje" required></textarea><button class="btn">Enviar</button></form>`:''}${w?`<p><a class="btn" href="https://wa.me/${w}" target="_blank" rel="noopener">WhatsApp</a></p>`:''}</section>`}
+return`<section ${id}>${h}<p>${esc(s.text).replace(/\n/g,'<br>')}</p></section>`}
+function gen(pi,pre){const pg=P.pages[pi],w=(P.wa||'').replace(/\D/g,'');
+return`<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(P.name)} - ${esc(pg.name)}</title>${pre?`<style>${css()}</style>`:'<link rel="stylesheet" href="style.css">'}</head><body><nav><b>${esc(P.name)}</b>${P.pages.map((p,i)=>`<a href="${slug(p.name,i)}.html">${esc(p.name)}</a>`).join('')}</nav>${pg.secs.map(secHTML).join('')}${w?`<a class="wa" href="https://wa.me/${w}" target="_blank" rel="noopener">WhatsApp</a>`:''}${pre?`<script>document.addEventListener('click',e=>{const a=e.target.closest('a');if(a&&/\\.html$/.test(a.getAttribute('href')))e.preventDefault()})<\/script>`:'<script src="script.js"><\/script>'}</body></html>`}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2600)}
+function save(){if(DB&&P)DB.doc('data/users/'+UID+'/project').set({json:JSON.stringify(P)}).catch(()=>{});try{localStorage.setItem('dwp',JSON.stringify(P));toast('Guardado ✓')}catch(e){toast('No se pudo guardar: demasiadas imágenes. Descarga tu ZIP.')}}
+function snap(){H=H.slice(0,hi+1);H.push(JSON.stringify(P));if(H.length>40)H.shift();hi=H.length-1}
+function chg(){prev();clearTimeout(tm);tm=setTimeout(()=>{snap();save()},600)}
+function hist(d){const n=hi+d;if(n<0||n>=H.length)return;hi=n;P=JSON.parse(H[n]);panel();prev();save()}
+function prev(){$('#fr').srcdoc=gen(P.cur,1)}
+function tplCards(el){$(el).innerHTML=Object.entries(T).map(([k,t])=>`<div class="card t" data-t="${k}"><div>${t[0]}</div><b>${t[1]}</b></div>`).join('')}
+async function start(k){if(P&&!await ask('Esto reemplazará tu proyecto actual. ¿Continuar?'))return;P=build(k);H=[];hi=-1;snap();save();VIEW='#editor';try{location.hash='#editor'}catch(e){}route()}
+document.addEventListener('click',e=>{const c=e.target.closest('[data-t]');if(c)start(c.dataset.t)});
+let VIEW=null;function route(){const ed=(VIEW||location.hash)=='#editor';$('#site').hidden=ed;$('#ed').hidden=!ed;if(!ed)return;scrollTo(0,0);
+bar();if(!P){$('#pick').hidden=false;$('#ed2').hidden=true}else{$('#pick').hidden=true;$('#back').hidden=true;$('#ed2').hidden=false;if(!H.length)snap();panel();prev()}}
+function bar(){$('#bar').innerHTML=`<a class="btn g s" href="#inicio" onclick="location.hash='#inicio'">← Inicio</a>${P?`<button class="btn g s" onclick="hist(-1)">↶ Deshacer</button><button class="btn g s" onclick="hist(1)">↷ Rehacer</button><button class="btn g s" onclick="$('#fr').classList.remove('m')">🖥️</button><button class="btn g s" onclick="$('#fr').classList.add('m')">📱</button><button class="btn g s" onclick="save()">Guardar</button><button class="btn g s" onclick="newP()">Cambiar plantilla</button><button class="btn s" onclick="exp()">Publicar o exportar mi página</button>`:''}`}
+function newPold(){if(confirm('Se abrirá el selector de plantillas. Tu proyecto guardado se mantiene hasta que elijas otra.')){const o=P;P=null;route();P=o;$('#pick').hidden=false;$('#ed2').hidden=true}}
+function panel(){const p=P.pages[P.cur];$('#panel').innerHTML=`<h4>Mi página</h4><label>Nombre del negocio</label><input data-g="name" value="${esc(P.name)}"><label>WhatsApp (con código de país)</label><input data-g="wa" value="${esc(P.wa)}" placeholder="50589493456"><label>Correo de contacto</label><input data-g="email" value="${esc(P.email)}" placeholder="tu@correo.com"><label>Color principal</label><input type="color" data-g="color" value="${esc(P.color)}"><label>Fuente</label><select data-g="font">${Object.keys(FONTS).map(f=>`<option ${f==P.font?'selected':''}>${f}</option>`).join('')}</select><label><input type="checkbox" data-g="dark" ${P.dark?'checked':''}> Fondo oscuro</label>
+<h4>Páginas</h4><div class="tabs">${P.pages.map((x,i)=>`<button class="btn s ${i==P.cur?'on':''}" data-a="pg" data-i="${i}">${esc(x.name)}</button>`).join('')}<button class="btn s g" data-a="addpg">+ Página</button></div><label>Nombre de esta página</label><input data-pn="1" value="${esc(p.name)}">${P.pages.length>1?'<button class="btn s g" data-a="delpg" style="margin-top:6px">Eliminar página</button>':''}
+<h4>Secciones</h4>${p.secs.map((s,i)=>`<details class="sc"><summary><span>${NAMES[s.type]}</span><button class="btn s g" data-a="up" data-i="${i}">↑</button><button class="btn s g" data-a="dn" data-i="${i}">↓</button><button class="btn s g" data-a="del" data-i="${i}">✕</button></summary>${FLD[s.type].map(k=>k=='img'?`<label>${LBL[k]}</label><input type="file" accept="image/*" data-f="img" data-i="${i}">${s.img?`<button class="btn s g" data-a="noimg" data-i="${i}">Quitar</button>`:''}`:k=='imgs'?`<label>${LBL[k]} (${s.imgs.length})</label><input type="file" accept="image/*" multiple data-f="imgs" data-i="${i}">${s.imgs.length?`<button class="btn s g" data-a="noimgs" data-i="${i}">Vaciar galería</button>`:''}`:k=='title'||k=='btn'?`<label>${LBL[k]}</label><input data-k="${k}" data-i="${i}" value="${esc(s[k])}">`:`<label>${LBL[k]}</label><textarea data-k="${k}" data-i="${i}">${esc(s[k])}</textarea>`).join('')}</details>`).join('')}
+<label>Añadir sección</label><select id="ns">${Object.entries(NAMES).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select><button class="btn s" data-a="add" style="margin-top:6px">+ Añadir</button>
+<h4>Modo avanzado (opcional)</h4><details c
